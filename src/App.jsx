@@ -8,6 +8,7 @@ import CreateProduct from './pages/Createproduct';
 import Cart from './pages/Cart';
 import Orders from './pages/Orders';
 import ProtectedRoute from './components/ProtectedRoute';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             }
           />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
