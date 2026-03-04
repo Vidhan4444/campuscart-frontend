@@ -3,7 +3,7 @@ import axios from "axios";
 const axiosInstance = axios.create({
   baseURL:
     import.meta.env.MODE === "production"
-      ? "https://your-backend-name.onrender.com/api"
+      ? "https://campuscart-api.onrender.com/api"
       : "http://localhost:5000/api",
   withCredentials: true,
 });
