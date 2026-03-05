@@ -1,16 +1,177 @@
-# React + Vite
+# SumeetsCampusCart Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend application for **SumeetsCampusCart**, a marketplace platform where users can browse products, manage carts, and place orders.
 
-Currently, two official plugins are available:
+The frontend communicates with a Node.js backend API and provides the user interface for the application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Live Application
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+https://sumeetscampuscart.netlify.app
 
-## Expanding the ESLint configuration
+Demo Login:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Email: test@gmail.com  
+Password: 123456
+
+---
+
+## Tech Stack
+
+- React
+- Vite
+- React Router
+- Axios
+- Context API
+- CSS
+
+---
+
+## Features
+
+- User signup and login
+- Session-based authentication
+- Product browsing
+- Add products to cart
+- Cart quantity management
+- Order placement
+- Order history
+- Admin product management
+- Protected routes
+- Mobile responsive UI
+
+---
+project structure
+src
+components
+Navbar.jsx
+pages
+Home.jsx
+Login.jsx
+Signup.jsx
+Cart.jsx
+Orders.jsx
+CreateProduct.jsx
+context
+AuthContext.jsx
+api
+axios.js
+
+
+---
+
+## Installation
+
+Clone repository
+
+
+git clone https://github.com/Vidhan4444/campuscart-frontend.git
+
+
+Install dependencies
+
+
+npm install
+
+
+Run development server
+
+
+npm run dev
+
+
+Application runs at
+
+
+http://localhost:5173
+
+
+---
+
+## API Configuration
+
+The frontend connects to the backend API.
+
+File:
+
+
+src/api/axios.js
+
+
+Configuration:
+
+
+baseURL: "https://campuscart-api.onrender.com/api
+"
+
+
+All requests include:
+
+
+withCredentials: true
+
+
+to support session authentication.
+
+---
+
+## Deployment
+
+Frontend deployed on **Netlify**.
+
+Steps:
+
+1. Push repository to GitHub
+2. Connect repository in Netlify
+3. Configure build settings
+
+Build command
+
+
+npm run build
+
+
+Publish directory
+
+
+dist
+
+
+4. Deploy
+
+---
+
+## Routing Fix for Netlify
+
+React Router requires a redirect rule.
+
+File:
+
+
+public/_redirects
+
+
+Content:
+
+
+/* /index.html 200
+
+
+This ensures direct navigation to routes like:
+
+
+/orders
+/cart
+/login
+
+
+works correctly.
+
+---
+
+## Author
+
+Sumeet Salunke
+
+## Project Structure
