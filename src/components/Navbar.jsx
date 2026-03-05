@@ -50,44 +50,59 @@
 // export default Navbar;
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useAuth } from "../context/useAuth";
 
 function Navbar() {
   const { user, cartCount, logout } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = async () => {
     await logout();
+    setIsMenuOpen(false);
   };
 
   return (
     <nav className="nav">
-      <div className="nav-left">
-        <Link to="/">CampusCart</Link>
-        <Link to="/shop">Shop</Link>
-        {user?.role === "admin" && <Link to="/create-product">Create Product</Link>}
-        {user && (
-          <Link to="/cart" className="cart-link">
-            Cart
-            <span className="cart-badge">{cartCount}</span>
-          </Link>
-        )}
-        {user && <Link to="/orders">Orders</Link>}
-      </div>
+      <button
+        type="button"
+        className="nav-hamburger"
+        aria-label="Toggle navigation menu"
+        aria-expanded={isMenuOpen}
+        onClick={() => setIsMenuOpen((prev) => !prev)}
+      >
+        ☰
+      </button>
 
-      <div className="nav-right">
-        {user ? (
-          <>
-            <span>{user.name}</span>
-            <button type="button" onClick={handleLogout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
-        )}
+      <div className={`nav-links-container ${isMenuOpen ? "open" : ""}`}>
+        <div className="nav-left">
+          <Link to="/" onClick={() => setIsMenuOpen(false)}>CampusCart</Link>
+          <Link to="/shop" onClick={() => setIsMenuOpen(false)}>Shop</Link>
+          {user?.role === "admin" && <Link to="/create-product" onClick={() => setIsMenuOpen(false)}>Create Product</Link>}
+          {user && (
+            <Link to="/cart" className="cart-link" onClick={() => setIsMenuOpen(false)}>
+              Cart
+              <span className="cart-badge">{cartCount}</span>
+            </Link>
+          )}
+          {user && <Link to="/orders" onClick={() => setIsMenuOpen(false)}>Orders</Link>}
+        </div>
+
+        <div className="nav-right">
+          {user ? (
+            <>
+              <span>{user.name}</span>
+              <button type="button" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" onClick={() => setIsMenuOpen(false)}>Login</Link>
+              <Link to="/signup" onClick={() => setIsMenuOpen(false)}>Signup</Link>
+            </>
+          )}
+        </div>
       </div>
     </nav>
   );
